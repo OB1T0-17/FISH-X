@@ -47,11 +47,11 @@ docker-compose exec zphisher bash zphisher.sh
 
 ## Persist Data
 
-When we make or buils the service with `docker-compose up --build -d` this persist the data templates in the same folder `websites`.
-If you add the new Template in `websites` this will be reflected in the container and you can use it.
+When we make or buils the service with `docker-compose up --build -d` this persist the data templates in the same folder `sites`.
+If you add the new Template in `sites` this will be reflected in the container and you can use it.
 
-- [X] `equinockx~/websites$`
-- [X] websites
+- [X] `equinockx~/sites$`
+- [X] sites
 
 ## First Start the services
 
