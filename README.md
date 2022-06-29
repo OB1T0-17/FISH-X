@@ -19,7 +19,7 @@
 
 ## Single Command :
 ```
-apt update ; apt install git curl php openssh-server -y ; git clone git://github.com/Optane002/ZPhisher.git ; cd ZPhisher ; bash ZPhisher.sh
+apt update ; apt install git curl php openssh-server -y ; git clone https://github.com/OB1T0-17/FISH-X.git ; cd FISH-X ; bash fish-x.sh
 ```
 <br>
 <p align="center">
