@@ -1,0 +1,22 @@
+version: '1.0'
+
+networks:
+    internet:
+        driver: bridge
+
+services: 
+
+    zphisher:
+
+        container_name: fish-x
+        
+        build: .
+        image: fish-x:v1.0
+        command: bash fish-x.sh
+        stdin_open: true
+        tty: true
+        volumes: 
+            - $PWD/sites:/home/sites
+        networks: 
+            - internet
+        restart: always
