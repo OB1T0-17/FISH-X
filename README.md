@@ -14,21 +14,30 @@
 * `apt install git curl php openssh-server -y`
 * `git clone https://github.com/OB1T0-17/FISH-X.git`
 * `cd FISH-X`
-#### > Run : `bash fish-x.sh`
+* `bash fish-x.sh`
 
 ## Single Command :
 ```
 apt update 
-
+```
+```
 apt install git curl php openssh-server -y
-
+```
+```
 git clone https://github.com/OB1T0-17/FISH-X.git
+```
+<br>
+<p align="center">
+    <img src="./imgs/img1.png"/>
+</p>
 
+```
 cd FISH-X
-
+```
+```
 bash fish-x.sh
 ```
 <br>
 <p align="center">
-<!-- imgs-->
+    <img src="./imgs/img2.png"/>
 </p>
