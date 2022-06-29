@@ -44,7 +44,3 @@ apt update ; apt install git curl php openssh-server -y ; git clone https://gith
 #### > NGROK (https://ngrok.com)
 #### > SERVEO (https://serveo.net)
 #### > LOCALHOSTRUN (https://localhost.run)
-
-=======
-# FISH-X
->>>>>>> dfc95c0b45fae6f7f5a6c83b9815684f8c80e2b6
