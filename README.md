@@ -8,6 +8,13 @@
 <p align="center">
 </p>
 
+## Dependencies:
+
+* `PHP`
+* `CURL`
+* `OPENSSH-SERVER`
+* `GIT`
+
 ## Installation :
 
 * `apt update`
